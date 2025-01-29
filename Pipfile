@@ -9,6 +9,7 @@ openai = "*"
 langchain-openai = "*"
 langchain-core = "*"
 langchain = "*"
+pypdf2 = "*"
 
 [requires]
 python_version = "3.10"

@@ -1,10 +1,10 @@
-# RAG Chatbot MVP 1
+# Resume Chatbot MVP 1
 
-A simple chatbot implementation using the RAG (Retrieval-Augmented Generation) system.
+A Resume Chat Bot that can answer questions relevant to your resume/cv
 
 ## Setup
 
-1. Install pipenv if you haven't already:
+1. Install pipenv:
 
 ```bash
 pip install pipenv
