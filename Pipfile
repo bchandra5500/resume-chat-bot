@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+python-dotenv = "*"
+openai = "*"
+langchain-openai = "*"
+langchain-core = "*"
+langchain = "*"
+
+[requires]
+python_version = "3.10"
+
+[scripts]
+python = "python3.10"
+
+[dev-packages]
