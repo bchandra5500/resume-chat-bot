@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: resume-chatbot-api
+    env: python
+    runtime: python3.8
+    buildCommand: pip install pipenv && pipenv install --deploy
+    startCommand: pipenv run python main.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: RESUME_NAME
+        value: resume.pdf
