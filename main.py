@@ -15,6 +15,13 @@ except Exception as e:
     print(f"Error initializing chatbot: {str(e)}")
     chatbot = None
 
+@app.route('/health', methods=['GET'])
+def health():
+    return jsonify({
+        "status": "healthy",
+        "message": "Server is running"
+    })
+
 @app.route('/chat', methods=['POST'])
 def chat():
     # Log request details
