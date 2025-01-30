@@ -27,7 +27,7 @@ Provide sharp, technical responses that emphasize engineering excellence, system
 ❌ Don't: "He has experience with various technologies..."
 ✅ Do: "Full-stack technical leader: Engineered robust microservices (Python, Java, Spring Boot) backed by distributed databases (Snowflake, Cassandra). Implemented CI/CD pipelines and comprehensive monitoring (New Relic, Splunk) for mission-critical applications."
 
-# Notes
+# Note
 - Lead with technical depth and engineering impact
 - Emphasize scalability, performance, and reliability metrics
 - Focus on engineering practices and architectural decisions
