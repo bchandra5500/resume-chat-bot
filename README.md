@@ -1,126 +1,64 @@
-# AI-Powered Resume Chatbot
+# Resume Chatbot Backend
 
-An intelligent chatbot that provides precise, technical insights about your resume. Built with LangChain and OpenAI, it analyzes PDF resumes and responds to queries with focused, impact-driven answers highlighting technical expertise and achievements.
+A Flask-based backend service that powers the AI resume chatbot.
 
-## Features
+## Deployment Instructions (Railway)
 
-- **PDF Resume Processing**: Automatically extracts and processes content from PDF resumes
-- **Context-Aware Responses**: Provides technically focused answers emphasizing:
-  - Engineering expertise and system design decisions
-  - Performance metrics and scalability achievements
-  - Technical leadership and innovation
-  - Quantifiable business impact
-- **Intelligent Memory**: Maintains conversation context for natural follow-up questions
-- **Professional Tone**: Delivers sharp, technical responses focused on engineering excellence
+1. Create a Railway account at https://railway.app
 
-## Prerequisites
-
-- Python 3.10+
-- OpenAI API key
-- PDF resume file
-- Basic understanding of markdown (for customizing system prompt)
-
-## Required Files
-
-1. **Resume PDF**
-
-   - Your resume in PDF format
-   - Recommended: Clear formatting for better text extraction
-   - Place in project root directory
-
-2. **system_prompt.txt**
-   - Controls chatbot's personality and response style
-   - Written in markdown format
-   - Default prompt optimized for technical responses
-   - Sections:
-     - Role: Defines chatbot's persona
-     - Task: Specifies response objectives
-     - Specifics: Detailed response guidelines
-     - Examples: Good/bad response examples
-     - Notes: Additional response criteria
-
-## Setup
-
-1. Install pipenv if not already installed:
+2. Install Railway CLI:
 
 ```bash
-pip install pipenv
+npm i -g @railway/cli
 ```
 
-2. Clone the repository and install dependencies:
+3. Login to Railway:
 
 ```bash
-git clone <repository-url>
-cd resume_chatbot
-pipenv install
+railway login
 ```
 
-3. Configure environment variables:
+4. Initialize Railway project:
 
 ```bash
-cp .env_template .env
+railway init
 ```
 
-4. Edit `.env` file with your settings:
+5. Add environment variables in Railway dashboard:
 
-```
-OPENAI_API_KEY=your_api_key_here
-RESUME_NAME=your_resume.pdf  # Name of your PDF resume file
-```
+- `RESUME_NAME`: Your resume file name (e.g. resume.pdf)
+- `FLASK_ENV`: Set to "production"
+- Upload your resume file to the project directory
 
-5. Set up required files:
-
-   a. Add your resume:
-
-   - Place your resume PDF file in the project directory
-   - Update RESUME_NAME in .env to match your PDF filename
-
-   b. Configure system prompt:
-
-   - Ensure `system_prompt.txt` exists in the project directory
-   - This file defines the chatbot's behavior and response style
-   - Default prompt is optimized for technical, impact-driven responses
-   - You can customize the prompt to change the chatbot's response style
-
-## Usage
-
-1. Start the chatbot:
+6. Deploy to Railway:
 
 ```bash
-pipenv run python main.py
+railway up
 ```
 
-2. Ask questions about the resume, for example:
+7. Get your deployment URL from Railway dashboard. You'll need this URL for the frontend configuration.
 
-- "What is the technical stack and expertise?"
-- "Describe the most impactful engineering projects"
-- "What are the key achievements at Capital One?"
+## Environment Variables
 
-3. Type 'quit' or 'exit' to end the session
-
-## Example Interactions
+Copy `.env_template` to `.env` and fill in the required values:
 
 ```
-Q: "What is the technical expertise?"
-A: "Expert in high-performance data engineering: Built mission-critical ETL pipelines
-with Python/PySpark, achieving 40% faster processing. Architected scalable cloud
-solutions using AWS Lambda/EMR, handling 1000+ daily requests with 99.9% uptime."
-
-Q: "Describe the most significant project impact"
-A: "Led development of a third-party SaaS catalog serving 1000+ daily requests,
-centralizing cybersecurity operations through automated approvals and metadata
-management. Engineered with Python/AWS Lambda, ensuring 99.9% availability through
-cross-region failover."
+RESUME_NAME=your-resume.pdf
+FLASK_ENV=development  # or production
 ```
 
-## Technical Implementation
+## Local Development
 
-- **Framework**: LangChain for conversation management and LLM integration
-- **PDF Processing**: PyPDF2 for resume content extraction
-- **Language Model**: OpenAI GPT-3.5 Turbo
-- **Conversation Management**: Implements memory for context-aware responses
-- **System Prompts**: Engineered for technical precision and impact focus
+1. Install dependencies:
 
-## Contributing
+```bash
+pip install -r requirements.txt
+```
 
-Feel free to submit issues, fork the repository, and create pull requests for any improvements.
+2. Run the server:
+
+```bash
+python main.py
+```
+
+The server will run on http://localhost:5001
