@@ -2,7 +2,7 @@ import os
 from chatbot import RAGChatbot
 
 def main():
-    resume_path = os.path.join(os.path.dirname(__file__), "Resume 2024_v2.docx.pdf")
+    resume_path = os.path.join(os.path.dirname(__file__), os.getenv("RESUME_NAME"))
     
     print("Resume ChatBot Initialized. Type 'quit' to exit.")
     print(f"Using resume: {resume_path}")

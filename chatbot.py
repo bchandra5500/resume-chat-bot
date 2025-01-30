@@ -27,14 +27,11 @@ class RAGChatbot:
         self.llm = ChatOpenAI(
             model_name="gpt-3.5-turbo",
             temperature=0.7,
-            api_key=os.getenv("OPENAI_API_KEY")
+            api_key=os.getenv("OPENAI_API_KEY", "")
         )
         
         # Create the chat prompt
-        system_message = f"""You are an AI assistant specifically designed to answer questions about the provided resume. Use the following resume information to provide accurate and relevant responses. Only answer questions based on the information present in the resume. If asked about information not present in the resume, clearly state that the information is not available in the resume.
-
-Resume Content:
-{self.resume_content}"""
+        system_message = self._get_system_prompt(os.getenv("SYSTEM_PROMPT_PATH", ""))
 
         self.prompt = ChatPromptTemplate.from_messages([
             ("system", system_message),
@@ -49,6 +46,16 @@ Resume Content:
         
         # Create the chain
         self.chain = self.prompt | self.llm
+    
+    def _get_system_prompt(self, system_prompt_path: str) -> str: 
+        if not os.path.exists(system_prompt_path):
+            raise FileNotFoundError(f"System prompt file not found: {system_prompt_path}")
+
+        with open(system_prompt_path, "r") as file:
+            system_prompt_template = file.read().strip()
+        
+        # Format the template with resume content
+        return system_prompt_template.format(resume_content=self.resume_content)
         
     def _load_resume(self, pdf_path: str) -> str:
         """
