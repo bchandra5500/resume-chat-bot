@@ -8,8 +8,10 @@ flask = "*"
 flask-cors = "*"
 python-dotenv = "*"
 langchain = "*"
+langchain-openai = "*"
+langchain-core = "*"
 openai = "*"
-pypdf = "*"
+PyPDF2 = "*"
 
 [dev-packages]
 
