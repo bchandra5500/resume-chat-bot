@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: resume-chatbot-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: RESUME_NAME
+        value: resume.pdf

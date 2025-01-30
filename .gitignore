@@ -39,9 +39,7 @@ ENV/
 .DS_Store
 
 # Project specific
-*.pdf
-resume.*
-system_prompt.txt
+resume.env
 
 # Logs
 *.log

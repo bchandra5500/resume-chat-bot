@@ -2,48 +2,38 @@
 
 A Flask-based backend service that powers the AI resume chatbot.
 
-## Deployment Instructions (Railway)
+## Deployment Instructions (Render.com)
 
-1. Create a Railway account at https://railway.app
+1. Create a Render account at https://render.com
 
-2. Install Railway CLI:
+2. Connect your GitHub repository to Render:
 
-```bash
-npm i -g @railway/cli
-```
+   - Go to Dashboard
+   - Click "New +"
+   - Select "Web Service"
+   - Choose your repository
+   - Select the branch to deploy
 
-3. Login to Railway:
+3. Configure the service:
 
-```bash
-railway login
-```
+   - Name: `resume-chatbot-api` (or your preferred name)
+   - Environment: `Python`
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `python main.py`
+   - Add environment variables:
+     - `RESUME_NAME`: `resume.pdf`
+     - `FLASK_ENV`: `production`
 
-4. Initialize Railway project:
+4. Click "Create Web Service"
 
-```bash
-railway init
-```
-
-5. Add environment variables in Railway dashboard:
-
-- `RESUME_NAME`: Your resume file name (e.g. resume.pdf)
-- `FLASK_ENV`: Set to "production"
-- Upload your resume file to the project directory
-
-6. Deploy to Railway:
-
-```bash
-railway up
-```
-
-7. Get your deployment URL from Railway dashboard. You'll need this URL for the frontend configuration.
+Your API will be available at `https://your-service-name.onrender.com`
 
 ## Environment Variables
 
 Copy `.env_template` to `.env` and fill in the required values:
 
 ```
-RESUME_NAME=your-resume.pdf
+RESUME_NAME=resume.pdf
 FLASK_ENV=development  # or production
 ```
 
