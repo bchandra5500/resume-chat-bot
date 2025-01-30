@@ -1,54 +1,75 @@
-# Resume Chatbot Backend
+# AI Resume Chatbot (Backend)
 
-A Flask-based backend service that powers the AI resume chatbot.
+Live Demo: [https://resume-chatbot-widget.onrender.com](https://resume-chatbot-widget.onrender.com)
 
-## Deployment Instructions (Render.com)
+A Flask-based AI chatbot service that uses LangChain and OpenAI to provide intelligent responses about my professional experience, powered by my resume.
 
-1. Create a Render account at https://render.com
+## Architecture
 
-2. Connect your GitHub repository to Render:
+- **Framework**: Flask (Python)
+- **AI Integration**:
+  - LangChain for orchestrating the conversation flow
+  - OpenAI's GPT models for natural language processing
+  - PDF parsing for resume data ingestion
+- **Deployment**: Render.com web service
+- **API Endpoints**:
+  - `/chat`: Main conversation endpoint
+  - `/health`: Service health check
 
-   - Go to Dashboard
-   - Click "New +"
-   - Select "Web Service"
-   - Choose your repository
-   - Select the branch to deploy
-
-3. Configure the service:
-
-   - Name: `resume-chatbot-api` (or your preferred name)
-   - Environment: `Python`
-   - Build Command: `pip install -r requirements.txt`
-   - Start Command: `python main.py`
-   - Add environment variables:
-     - `RESUME_NAME`: `resume.pdf`
-     - `FLASK_ENV`: `production`
-
-4. Click "Create Web Service"
-
-Your API will be available at `https://your-service-name.onrender.com`
-
-## Environment Variables
-
-Copy `.env_template` to `.env` and fill in the required values:
+## Project Structure
 
 ```
-RESUME_NAME=resume.pdf
-FLASK_ENV=development  # or production
+resume_chatbot/
+├── main.py           # Flask application entry
+├── chatbot.py        # Core chatbot logic
+├── system_prompt.txt # AI system instructions
+└── resume.pdf        # Source resume document
 ```
 
 ## Local Development
 
-1. Install dependencies:
+1. **Environment Setup**
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   # Install pipenv if not installed
+   pip install pipenv
 
-2. Run the server:
+   # Install dependencies
+   pipenv install
 
-```bash
-python main.py
-```
+   # Copy environment template
+   cp .env_template .env
+   ```
 
-The server will run on http://localhost:5001
+2. **Configure Environment**
+
+   ```
+   OPENAI_API_KEY=your_key_here
+   RESUME_NAME=resume.pdf
+   FLASK_ENV=development
+   ```
+
+3. **Run the Server**
+   ```bash
+   pipenv run dev
+   ```
+   Server runs on http://localhost:5001
+
+## Technology Stack
+
+- **Python 3.11**: Core language
+- **Flask**: Web framework
+- **LangChain**: LLM framework
+- **OpenAI GPT**: Language model
+- **PyPDF2**: PDF processing
+- **CORS**: Cross-origin support
+
+## Workflow
+
+1. Client sends chat message to `/chat` endpoint
+2. Message is processed by LangChain pipeline
+3. Context from resume is retrieved and formatted
+4. OpenAI generates appropriate response
+5. Response is returned to client
+
+This service is designed to be highly responsive and scalable, with built-in error handling and rate limiting.
