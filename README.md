@@ -1,6 +1,6 @@
 # AI Resume Chatbot (Backend)
 
-Live Demo: [https://resume-chatbot-widget.onrender.com](https://resume-chatbot-widget.onrender.com)
+Live Demo: [https://bharat-resume-chat-bot-widget.onrender.com](https://bharat-resume-chat-bot-widget.onrender.com)
 
 A Flask-based AI chatbot service that uses LangChain and OpenAI to provide intelligent responses about my professional experience, powered by my resume.
 
